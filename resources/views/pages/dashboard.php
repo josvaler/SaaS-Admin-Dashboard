@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="120">
 <div class="container-fluid">
   <div class="row g-3">
     <div class="col-12 col-md-6 col-xl-3">
