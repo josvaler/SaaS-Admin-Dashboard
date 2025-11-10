@@ -63,15 +63,25 @@ document.addEventListener('DOMContentLoaded', () => {
         danger: 'rgb(231, 24, 49)',
       };
       const backgroundGrey = 'rgba(255, 255, 255, 0.08)';
-      const gaugeColorFor = (perc) => {
-        if (perc >= 80) return COLORS.good;
-        if (perc >= 60) return COLORS.warning;
+      const warningThresholdAttr = Number(canvas.dataset.warningThreshold);
+      const dangerThresholdAttr = Number(canvas.dataset.dangerThreshold);
+      const percentForColor = Math.max(0, Math.min(100, percentageRaw));
+
+      const activeColor = (() => {
+        if (preferLow) {
+          const warnCutoff = Number.isFinite(warningThresholdAttr) ? warningThresholdAttr : 50;
+          const dangerCutoff = Number.isFinite(dangerThresholdAttr) ? dangerThresholdAttr : 75;
+          if (percentForColor <= warnCutoff) return COLORS.good;
+          if (percentForColor <= dangerCutoff) return COLORS.warning;
+          return COLORS.danger;
+        }
+
+        const goodCutoff = Number.isFinite(dangerThresholdAttr) ? dangerThresholdAttr : 80;
+        const warnCutoff = Number.isFinite(warningThresholdAttr) ? warningThresholdAttr : 60;
+        if (percentForColor >= goodCutoff) return COLORS.good;
+        if (percentForColor >= warnCutoff) return COLORS.warning;
         return COLORS.danger;
-      };
-      const colorBasis = preferLow
-        ? Math.max(0, Math.min(100, 100 - Math.min(clampedPercentage, 100)))
-        : Math.max(0, Math.min(100, clampedPercentage));
-      const activeColor = gaugeColorFor(colorBasis);
+      })();
 
       const gaugeLabelPlugin = {
         id: `gaugeLabel${index}`,

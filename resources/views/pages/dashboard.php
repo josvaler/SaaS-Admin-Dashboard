@@ -46,6 +46,9 @@
                     data-total="<?= max(0, (int) round($operationsTotal ?? 0)) ?>"
                     data-capacity="100"
                     data-caption="Total vs target (100 ops)"
+                    data-direction="down"
+                    data-warning-threshold="50"
+                    data-danger-threshold="75"
                     data-summary="<?= htmlspecialchars(number_format((int) round($operationsTotal ?? 0)) . ' / 100 ops', ENT_QUOTES) ?>"
                     height="160"></canvas>
           </div>
