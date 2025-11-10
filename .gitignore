@@ -1,0 +1,83 @@
+# =========================================
+# PHP / HTML5 / JavaScript .gitignore
+# =========================================
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# Node / NPM
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Composer / PHP
+vendor/
+composer.lock
+composer.phar
+*.log
+*.cache
+*.tmp
+
+# Environment & Secrets
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# IDE / Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build / Temp / Cache
+dist/
+build/
+cache/
+tmp/
+logs/
+coverage/
+.phpunit.result.cache
+
+# Frontend Bundles
+*.min.js.map
+*.map
+*.min.css.map
+
+# Runtime Files
+*.pid
+*.seed
+*.pid.lock
+
+# Uploads / Generated Files
+uploads/
+storage/
+public/uploads/
+public/storage/
+
+# Backup & Misc
+*.bak
+*.old
+*.orig
+*.swp
+*.swo
+
+# OS X / Windows temporary
+._*
+~$*
+*.lnk
+
+# ======================
+# Custom local dev files
+# ======================
+/config/bootstrap.php.bak
+/private/
+/tests/
+/sandbox/
